@@ -36,3 +36,45 @@ npm run dev
 - 标准浏览器通常无法直接读取本地绝对路径，因此该能力是 **best effort**：
   - 若运行环境能提供本地路径（如部分桌面壳场景），会尝试打开 `file://` 目录。
   - 若拿不到路径，会提示受浏览器限制。
+
+## 更新本地已下载代码（Git）
+
+如果你已经 `git clone` 过仓库，后续更新推荐这样做：
+
+```bash
+# 1) 进入项目目录
+cd 你的项目目录
+
+# 2) 查看当前分支
+git branch --show-current
+
+# 3) 拉取远端最新信息
+git fetch origin
+
+# 4) 更新当前分支（假设你在 main）
+git pull origin main
+```
+
+如果你是在自己的功能分支上开发，先保存本地改动再更新：
+
+```bash
+# 方案A：先提交
+git add .
+git commit -m "wip: save local changes"
+git pull --rebase origin main
+
+# 方案B：临时收起改动
+git stash
+git pull --rebase origin main
+git stash pop
+```
+
+### 常见情况
+
+- `Already up to date.`：说明你本地已经是最新。
+- `CONFLICT`：有冲突，按提示编辑冲突文件后再 `git add` 并继续。
+- 不确定远端默认分支名时，可先看：
+
+```bash
+git remote show origin
+```
