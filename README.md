@@ -78,3 +78,19 @@ git stash pop
 ```bash
 git remote show origin
 ```
+
+## 在项目目录里直接输入 `cmd` 可以吗？
+
+可以，完全没问题，这是 Windows 下最常见操作：
+
+1. 打开你的项目文件夹。
+2. 在资源管理器地址栏输入 `cmd` 回车。
+3. 会在当前目录直接打开命令行。
+4. 直接执行：
+
+```bash
+git fetch origin
+git pull origin main
+```
+
+如果你的默认分支不是 `main`（例如 `master`），把命令里的 `main` 换成实际分支名即可。
